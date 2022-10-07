@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Chamado</title>
+    <link  href="index.css"  rel="stylesheet">
+    <link  href="page2.htm" >
+
+</head>
+<body>
+    <!-- Corpo da página -->
+    <div class="container">
+        <!-- Titulo e subtitulo -->
+        <div>
+            <h1 id="titulo">Criar Novo chamdo</h1>
+            <p id="subtitulo">Complete os campos abaixo e clique em "Enviar"</p>
+            <br>
+        </div>
+        <!-- Aqui começa o formulário -->
+        <form action="https://sheetdb.io/api/v1/ujcp4y67bt0o7" method="post" id="sheetdb-form" >
+
+            <div class="campo">
+                <!-- Input do Nome -->
+                <label for="Nome"><strong>Nome</strong></label>
+                <input type="text" name="data[Nome]" id="nome" required>
+
+            </div>
+
+            <div class="campo">
+                <!-- Input do endereço -->
+                <label for="Endereço"><strong>Endereço</strong></label>
+                <input type="text" name="data[Endereço]" id="rua" required>
+
+            </div>
+
+            <div class="campo">
+                <!-- Input do telefone -->
+                <label for="Telefone"><strong>Telefone</strong></label>
+                <input type="text" name="data[Telefone]" id="sobrenome" required>
+                
+            </div>
+        
+
+            <div class="campo">
+                <!-- Input do bairro -->
+                <label for="Bairro"><strong>Bairro</strong></label>
+                <input type="text" name="data[Bairro]" id="bairro" required>
+            </div>
+
+            <div class="campo">
+                
+                <!-- Aqui é para aparecer 4 radios de seleção para o usuário escolher a Categoria -->
+                <label><strong>Qual a categoria do seu problema?</strong></label>
+
+                <label for="Categoria">
+                    <input type="radio" name="data[Categoria]" value="Estrada" checked required><b> Estrada</b>
+                </label>
+
+                <label for="Categoria">
+                    <input type="radio" name="data[Categoria]" value="Bueiro" required><b> Bueiro</b>
+                </label>
+
+                <label for="Categoria">
+                    <input type="radio" name="data[Categoria]" value="Calcada" required><b> Calçada</b>
+                </label>
+
+                <label for="Categoria">
+                    <input type="radio" name="data[Categoria]" value="Outro" required><b> Outro</b> 
+                </label>
+
+            </div>
+
+        
+            <div class="campo">
+                <!-- Input da descrição de problema -->
+                <br>
+                <label for="Descrição"><strong>Descreva o problema: </strong></label>
+
+                <textarea rows="6" style="width: 26em" placeholder="Sua descrição"id="experiencia" name="data[Descrição]" required></textarea>
+
+            </div>
+            <!-- Botão de submit para enviar o chamado -->
+            <button class="input-class botao" type="submit" class="signupbtn"><p>Enviar Chamado</p> </button>
+
+        </form>
+
+    </div>
+
+            <div class="btn-enviar">
+           
+            </div>
+
+    <script>
+        // Aqui começa o código em Javascript
+
+        // Coloca o formulário dentro da variável "form"
+        var form = document.getElementById('sheetdb-form');
+
+        // Ao dar submit no formulario ele da o post na URL que se encontra no parâmetro "action" do form
+        form.addEventListener("submit", e => {
+
+            e.preventDefault();
+            fetch(form.action, {
+                method : "POST",
+                body: new FormData(document.getElementById("sheetdb-form")),
+            }).then(
+                response => response.json()
+            ).then((html) => {
+                
+                // Após o post ele irá abrir uma nova guia com as informações que estão na Page2, que é uma mensagem dizendo que a solicitação foi enviada com sucesso
+                window.open('page2.htm', '_blank');
+
+            });
+            });
+
+    </script>
+
+</body>
+</html>
